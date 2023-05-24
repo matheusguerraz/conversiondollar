@@ -4,6 +4,29 @@
     <title>Template</title>
     <style>
         /* Estilos CSS aqui */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        #nao {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 <body>
@@ -12,15 +35,27 @@
     <input type="radio" id="sim" name="opcoes" onclick="openURL()">
     <label for="nao">Não</label>
     <input type="radio" id="nao" name="opcoes" onclick="moveButton()">
-    
+
     <script>
         function openURL() {
             window.location.href = "https://www.youtube.com/watch?v=XCWQyjHcNzA";
         }
 
         function moveButton() {
-            // Código para mover o botão "Não" para outra posição
+            const button = document.getElementById("nao");
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const buttonWidth = button.offsetWidth;
+            const buttonHeight = button.offsetHeight;
+
+            const randomX = Math.random() * (screenWidth - buttonWidth);
+            const randomY = Math.random() * (screenHeight - buttonHeight);
+
+            button.style.left = randomX + "px";
+            button.style.top = randomY + "px";
         }
     </script>
 </body>
+</html>
+
 </html>
