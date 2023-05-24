@@ -37,7 +37,9 @@
 
     <script>
         function openURL() {
-            window.location.href = "https://www.youtube.com/watch?v=XCWQyjHcNzA";
+            if (document.getElementById("sim").checked) {
+                window.location.href = "https://www.youtube.com/watch?v=XCWQyjHcNzA";
+            }
         }
 
         function moveButton() {
