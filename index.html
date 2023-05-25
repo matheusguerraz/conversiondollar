@@ -16,56 +16,57 @@
             text-align: center;
         }
 
-        label {
-            margin-right: 10px;
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button-container button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: lightgray;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         #nao {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
         }
 
-        #nao span {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        #nao:hover {
+            animation: moveButton 2s infinite;
+        }
+
+        @keyframes moveButton {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(10px, 0);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
         }
     </style>
 </head>
 <body>
     <h1>Cuzin hoje?</h1>
-    <label for="sim">Sim</label>
-    <input type="radio" id="sim" name="opcoes" onclick="openURL()">
-    <label for="nao">Não</label>
-    <input type="radio" id="nao" name="opcoes" onclick="moveButton(event)">
-    <span>Não</span>
+    <div class="button-container">
+        <button onclick="openURL()">Sim</button>
+        <button id="nao" onclick="moveButton()">Não</button>
+    </div>
 
     <script>
         function openURL() {
-            if (document.getElementById("sim").checked) {
-                window.location.href = "https://www.youtube.com/watch?v=XCWQyjHcNzA";
-            }
+            window.location.href = "https://www.youtube.com/watch?v=XCWQyjHcNzA";
         }
 
-        function moveButton(event) {
-            event.preventDefault();
+        function moveButton() {
             const button = document.getElementById("nao");
-            const buttonText = document.querySelector("#nao span");
-            const screenWidth = window.innerWidth;
-            const screenHeight = window.innerHeight;
-            const buttonWidth = button.offsetWidth;
-            const buttonHeight = button.offsetHeight;
-
-            const randomX = Math.random() * (screenWidth - buttonWidth);
-            const randomY = Math.random() * (screenHeight - buttonHeight);
-
-            button.style.left = randomX + "px";
-            button.style.top = randomY + "px";
-            buttonText.style.left = randomX + "px";
-            buttonText.style.top = randomY + "px";
+            button.style.animationPlayState = "running";
         }
     </script>
 </body>
