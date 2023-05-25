@@ -26,6 +26,13 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+
+        #nao span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 <body>
@@ -34,6 +41,7 @@
     <input type="radio" id="sim" name="opcoes" onclick="openURL()">
     <label for="nao">Não</label>
     <input type="radio" id="nao" name="opcoes" onclick="moveButton(event)">
+    <span>Não</span>
 
     <script>
         function openURL() {
@@ -45,6 +53,7 @@
         function moveButton(event) {
             event.preventDefault();
             const button = document.getElementById("nao");
+            const buttonText = document.querySelector("#nao span");
             const screenWidth = window.innerWidth;
             const screenHeight = window.innerHeight;
             const buttonWidth = button.offsetWidth;
@@ -55,6 +64,8 @@
 
             button.style.left = randomX + "px";
             button.style.top = randomY + "px";
+            buttonText.style.left = randomX + "px";
+            buttonText.style.top = randomY + "px";
         }
     </script>
 </body>
