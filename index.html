@@ -20,6 +20,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
 
         .button-container button {
@@ -29,10 +32,10 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-        }
-
-        #nao {
-            position: relative;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         #nao:hover {
@@ -66,19 +69,14 @@
 
         function moveButton() {
             const button = document.getElementById("nao");
-            const buttonText = document.querySelector("#nao span");
-            const screenWidth = window.innerWidth;
-            const screenHeight = window.innerHeight;
-            const buttonWidth = button.offsetWidth;
-            const buttonHeight = button.offsetHeight;
+            const screenWidth = window.innerWidth - button.offsetWidth;
+            const screenHeight = window.innerHeight - button.offsetHeight;
 
-            const randomX = Math.random() * (screenWidth - buttonWidth);
-            const randomY = Math.random() * (screenHeight - buttonHeight);
+            const randomX = Math.random() * screenWidth;
+            const randomY = Math.random() * screenHeight;
 
             button.style.left = randomX + "px";
             button.style.top = randomY + "px";
-            buttonText.style.left = randomX + "px";
-            buttonText.style.top = randomY + "px";
         }
     </script>
 </body>
