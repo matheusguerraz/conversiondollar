@@ -33,7 +33,7 @@
     <label for="sim">Sim</label>
     <input type="radio" id="sim" name="opcoes" onclick="openURL()">
     <label for="nao">Não</label>
-    <input type="radio" id="nao" name="opcoes" onmouseover="moveButton()">
+    <input type="radio" id="nao" name="opcoes" onclick="moveButton(event)">
 
     <script>
         function openURL() {
@@ -42,7 +42,8 @@
             }
         }
 
-        function moveButton() {
+        function moveButton(event) {
+            event.preventDefault();
             const button = document.getElementById("nao");
             const screenWidth = window.innerWidth;
             const screenHeight = window.innerHeight;
