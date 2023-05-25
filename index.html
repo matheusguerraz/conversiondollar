@@ -66,7 +66,19 @@
 
         function moveButton() {
             const button = document.getElementById("nao");
-            button.style.animationPlayState = "running";
+            const buttonText = document.querySelector("#nao span");
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const buttonWidth = button.offsetWidth;
+            const buttonHeight = button.offsetHeight;
+
+            const randomX = Math.random() * (screenWidth - buttonWidth);
+            const randomY = Math.random() * (screenHeight - buttonHeight);
+
+            button.style.left = randomX + "px";
+            button.style.top = randomY + "px";
+            buttonText.style.left = randomX + "px";
+            buttonText.style.top = randomY + "px";
         }
     </script>
 </body>
